@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='exactrasterpolyextract',
-    version='0.1.0',
+    version='0.1.1',
     license='Apache 2.0',
     install_requires=[
         'pandas>=2.2.3',
