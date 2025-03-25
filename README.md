@@ -1,9 +1,9 @@
-# ExactRasterPolyExtract 
 
-## Description
+![Banner](./data/ExactRasterPolyExtract_banner.PNG)
+# ExactRasterPolyExtract
 A wrapper for the `exact_extract` function for polygon-based raster extraction.
 
-ExactRasterPolyExtract is a wrapper for the Python binding of the [exact_extract](https://isciences.github.io/exactextract/) function. `exact_extract` conveniently provides coverage fraction of each pixel that is covered by a polygon, enabling e.g. subset extraction by coverage fraction. 
+ExactRasterPolyExtract is a wrapper for the Python binding of the [exact_extract](https://isciences.github.io/exactextract/) function. `exact_extract` conveniently provides the coverage fraction of each pixel that is covered by a polygon, enabling e.g. subset extraction by coverage fraction. 
 The wrapper `exact_raster_poly_extract` provides a simple interface to `exact_extract`, allowing users to extract pixel values and coverage fractions from raster datasets using polygon geometries. The output is formatted to be suitable as input for ML tasks. 
 
 **Details:**  
