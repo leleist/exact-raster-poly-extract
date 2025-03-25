@@ -56,7 +56,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Acknowledgment
+Acknowledgments
 
 This package is a wrapper for the `exact_extract` function. 
 Its development was supported by NASA, U.S. Army Engineer Research and Development Center (ERDC) and ISciences, LLC and is used under the Apache License 2.0.
