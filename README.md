@@ -1,5 +1,5 @@
 
-![Banner](./exactrasterpolyextract/data/ExactRasterPolyExtract_banner.PNG)
+![Banner](exactrasterpolyextract/data/ExactRasterPolyExtract_banner.PNG)
 # ExactRasterPolyExtract
 A wrapper for the `exact_extract` function for polygon-based raster extraction.
 
@@ -49,8 +49,8 @@ This package is a wrapper for the `exact_extract` function.
 Its development was supported by NASA, U.S. Army Engineer Research and Development Center (ERDC) and ISciences, LLC and is used under the Apache License 2.0.
 
 If you use this package, please cite: 
- - the **original authors**
- - Leist, Leander (2025). ExactRasterPolyExtract: A wrapper for the exact_extract function for polygon-based raster extraction, Laboratory for Climatology and Remote Sensing (LCRS), University of Marburg, Germany, GitHub. https://github.com/leleist/exactrasterpolyextract
+  - the **original authors**
+  - Leist, Leander (2025). ExactRasterPolyExtract: A wrapper for the exact_extract function for polygon-based raster extraction, Laboratory for Climatology and Remote Sensing (LCRS), University of Marburg, Germany, GitHub. https://github.com/leleist/exactrasterpolyextract
 
 ## License
 Licensed under the Apache License, Version 2.0 [See](./LICENSE);
