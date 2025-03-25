@@ -1,5 +1,5 @@
 
-![Banner](./data/ExactRasterPolyExtract_banner.PNG)
+![Banner](./exactrasterpolyextract/data/ExactRasterPolyExtract_banner.PNG)
 # ExactRasterPolyExtract
 A wrapper for the `exact_extract` function for polygon-based raster extraction.
 
