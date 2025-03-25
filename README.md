@@ -9,7 +9,7 @@ The wrapper `exact_raster_poly_extract` provides a simple interface to `exact_ex
 **Details:**  
 `exact_extract` returns a pandas DataFrame of shape: (polygons) x (bands + columns), where each value cell contains a 1D array (pd.Series) of pixel values. The length of said array varies with the number of pixels covered by the polygon.
 
-In `exact_raster_poly_extract`, we transform this output into a pandas DataFrame of shape: (**pixels**) x (bands + polygon ID + columns).
+In `exact_raster_poly_extract`, we transform this output into a pandas DataFrame of shape: (**pixels**) x (bands + polygon ID + columns), easing downstream use in ML applications.
 
 ## Installation
 ```bash
