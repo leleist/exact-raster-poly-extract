@@ -46,7 +46,7 @@ Current ToDos:
 ## Acknowledgments
 
 This package is a wrapper for the `exact_extract` function. 
-Its development was supported by NASA, U.S. Army Engineer Research and Development Center (ERDC) and ISciences, LLC and is used under the Apache License 2.0.
+The latter development was supported by NASA, U.S. Army Engineer Research and Development Center (ERDC) and ISciences, LLC and is used under the Apache License 2.0.
 
 If you use this package, please cite: 
   - the **original authors**
