@@ -14,6 +14,8 @@ def exact_raster_poly_extract(raster_path, shp_path, include_cols=None, out_path
     The polygon information should be wrapped into a separate column.
 '''
 
+    # TODO: make polygonID field an extra parameter, then combine the col with the others. if no polygonID is given, generate one!
+
     polygons = gpd.read_file(shp_path)
     with rasterio.open(raster_path) as src:
         raster = src.read()
@@ -41,9 +43,13 @@ def exact_raster_poly_extract(raster_path, shp_path, include_cols=None, out_path
 
     ex_ex_df = exact_extract(raster_path, polygons, ["values", "coverage"],
                              include_cols=include_cols, output="pandas", progress=progress)
+    # TODO add include geometry option (see documentation)
 
     # remove empty fields
     ex_ex_df = ex_ex_df[ex_ex_df.iloc[:, len(include_cols) + 1].apply(lambda x: len(x) > 0)]
+
+    if ex_ex_df.empty:
+        raise ValueError("No polygons were found in the raster extent.")
 
     # preparation
     meta_count = len(include_cols)
