@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import geopandas as gpd
 import rasterio
@@ -17,6 +18,22 @@ def exact_raster_poly_extract(raster_path, shp_path, include_cols=None, out_path
     # TODO: make polygonID field an extra parameter, then combine the col with the others. if no polygonID is given, generate one!
 
     polygons = gpd.read_file(shp_path)
+
+    # convert any pd.series of object type to numeric or string types to make it digestible for exact_extract
+    geometry_col = 'geometry'
+
+    for col in polygons.columns:
+        if col != geometry_col:
+            try:
+                if polygons[col].dropna().apply(float.is_integer).all():
+                    polygons[col] = polygons[col].astype('Int64')
+                else:
+                    polygons[col] = pd.to_numeric(polygons[col], errors='coerce').astype(float)
+            except (ValueError, TypeError):
+                polygons[col] = polygons[col].astype(str)
+                polygons[col] = polygons[col].replace('nan', np.nan)
+
+
     with rasterio.open(raster_path) as src:
         raster = src.read()
         bounds = src.bounds
