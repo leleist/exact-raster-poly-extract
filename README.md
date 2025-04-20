@@ -1,9 +1,9 @@
 
-![Banner](exactrasterpolyextract/data/ExactRasterPolyExtract_banner.PNG)
-# ExactRasterPolyExtract
+![Banner](exact_raster_poly_extract/data/ExactRasterPolyExtract_banner_v02.PNG)
+# Exact Raster Polygon Extract
 A wrapper for the `exact_extract` function for polygon-based raster value extraction.
 
-ExactRasterPolyExtract is a wrapper for the Python binding of the [exact_extract](https://isciences.github.io/exactextract/) function. `exact_extract` conveniently provides the coverage fraction of each pixel that is covered by a polygon, enabling e.g. subset extraction by coverage fraction. 
+exact-raster-poly-extract is a wrapper for the Python binding of the [exact_extract](https://isciences.github.io/exactextract/) function. `exact_extract` conveniently provides the coverage fraction of each pixel that is covered by a polygon, enabling e.g. subset extraction by coverage fraction. 
 The wrapper `exact_raster_poly_extract` provides a simple interface to `exact_extract`, allowing users to extract pixel values and coverage fractions from raster datasets using polygon geometries. The output is formatted to be suitable as input for ML tasks. 
 
 **Details:**  
@@ -13,12 +13,12 @@ In `exact_raster_poly_extract`, we transform this output into a pandas DataFrame
 
 ## Installation
 ```bash
-pip install git+https://github.com/leleist/exactrasterpolyextract.git
+pip install git+https://github.com/leleist/exact-raster-poly-extract.git
 ```
 
 ## Usage
 ```python
-from exactrasterpolyextract import exact_raster_poly_extract
+from exact-raster-poly-extract import exact_raster_poly_extract
 
 # reference to raster file
 raster_path = 'path/to/raster.tif'
@@ -50,7 +50,7 @@ The latter development was supported by NASA, U.S. Army Engineer Research and De
 
 If you use this package, please cite: 
   - the **original authors**
-  - Leist, Leander (2025). ExactRasterPolyExtract: A wrapper for the exact_extract function for polygon-based raster value extraction, Laboratory of Climatology and Remote Sensing (LCRS), University of Marburg, Germany, GitHub. https://github.com/leleist/exactrasterpolyextract
+  - Leist, Leander (2025). exact-raster-poly-extract: A wrapper for the exact_extract function for polygon-based raster value extraction, Laboratory of Climatology and Remote Sensing (LCRS), University of Marburg, Germany, GitHub. https://github.com/leleist/exact-raster-poly-extract
 
 ## License
 Licensed under the Apache License, Version 2.0 [See](./LICENSE);
