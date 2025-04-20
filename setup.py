@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='exact_raster_poly_extract',
-    version='1.0.0',
+    version='1.0.1',
     license='Apache 2.0',
     install_requires=[
         'pandas>=2.2.3',
