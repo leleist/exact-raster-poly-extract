@@ -50,7 +50,7 @@ The latter development was supported by NASA, U.S. Army Engineer Research and De
 
 If you use this package, please cite: 
   - the **original authors**
-  - Leist, Leander (2025). ExactRasterPolyExtract: A wrapper for the exact_extract function for polygon-based raster extraction, Laboratory of Climatology and Remote Sensing (LCRS), University of Marburg, Germany, GitHub. https://github.com/leleist/exactrasterpolyextract
+  - Leist, Leander (2025). ExactRasterPolyExtract: A wrapper for the exact_extract function for polygon-based raster value extraction, Laboratory of Climatology and Remote Sensing (LCRS), University of Marburg, Germany, GitHub. https://github.com/leleist/exactrasterpolyextract
 
 ## License
 Licensed under the Apache License, Version 2.0 [See](./LICENSE);
