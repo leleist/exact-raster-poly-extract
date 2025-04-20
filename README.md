@@ -18,7 +18,7 @@ pip install git+https://github.com/leleist/exact-raster-poly-extract.git
 
 ## Usage
 ```python
-from exact-raster-poly-extract import exact_raster_poly_extract
+from exact_raster_poly_extract import exact_raster_poly_extract
 
 # reference to raster file
 raster_path = 'path/to/raster.tif'
