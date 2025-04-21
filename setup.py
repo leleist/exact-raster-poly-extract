@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='exact_raster_poly_extract',
-    version='1.0.1',
+    version='1.1.0',
     license='Apache 2.0',
     packages=['exact_raster_poly_extract'],
     install_requires=[
