@@ -5,7 +5,14 @@ import rasterio
 from exactextract import exact_extract
 
 
-def exact_raster_poly_extract(raster_path, shp_path, include_cols=None, out_path=None, return_df=True, progress=True):
+def exact_raster_poly_extract(
+        raster_path,
+        shp_path,
+        include_cols=None,
+        out_path=None,
+        fillvalue=9999,
+        return_df=True,
+        progress=True):
     '''
     robustly, not necessarily efficiently, explode the exact_extract output.
     output is a df of polygons x bands, where each cell contains a list(pd.series) of pixel values.
@@ -31,8 +38,26 @@ def exact_raster_poly_extract(raster_path, shp_path, include_cols=None, out_path
                     polygons[col] = pd.to_numeric(polygons[col], errors='coerce').astype(float)
             except (ValueError, TypeError):
                 polygons[col] = polygons[col].astype(str)
-                polygons[col] = polygons[col].replace('nan', np.nan)
+                polygons[col] = polygons[col].replace('nan', int(0)) # np.nan
 
+    for col in polygons.columns:
+        if col == geometry_col:
+            continue
+        try:
+            # integer‐only?
+            if polygons[col].dropna().apply(float.is_integer).all():
+                polygons[col] = polygons[col].astype("Int64")
+            else:
+                # try numeric (floats)
+                polygons[col] = pd.to_numeric(polygons[col], errors="coerce").astype(float)
+        except (ValueError, TypeError):
+            # fallback to string
+            polygons[col] = polygons[col].astype(str)
+
+        # fill any remaining NaNs (or <NA>) and warn
+        if polygons[col].isnull().any():
+            print(f"Column '{col}' contained missing values; filling with {fillvalue}.")
+            polygons[col] = polygons[col].fillna(fillvalue)
 
     with rasterio.open(raster_path) as src:
         raster = src.read()
