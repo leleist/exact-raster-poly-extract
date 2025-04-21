@@ -31,7 +31,7 @@ include_columns = ['column1', 'column2'] # e.g. ['id', 'class']
 
 # extract pixelvalues and coverage fractions
 
-output = exact_raster_poly_extract(raster_path, polygon_path, include_columns, progress=True)
+output = exact_raster_poly_extract(raster_path, polygon_path, include_columns,fillvalue=9999, progress=True)
 ```
 
 ## Contributions
