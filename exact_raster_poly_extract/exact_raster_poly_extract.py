@@ -97,12 +97,18 @@ def exact_raster_poly_extract(
     meta_count = len(include_cols)
     pixelwise_cols = ex_ex_df.columns[
                      meta_count:num_bands + meta_count]  # skip the metadata cols, just pixel values/bands
-    fraction_cols = ex_ex_df.columns[
-        meta_count + num_bands + 1]  # first col with coverage fraction, others are redundant
+
+    # take mean over redundant/identical band wise coverage columns, yet retain redundancy should some bands have NAs.
+    fraction_cols = [c for c in ex_ex_df.columns if c.endswith("_coverage")]
+    mean_coverages = ex_ex_df[fraction_cols].apply(
+        lambda row: np.nanmean(np.stack(row.values), axis=0),
+        axis=1
+    )
+
 
     metadata = ex_ex_df[include_cols]
     pixelvalues = ex_ex_df[pixelwise_cols]
-    factions = ex_ex_df[fraction_cols]
+    fractions = ex_ex_df[fraction_cols]
 
     final_result = pd.DataFrame()
 
@@ -113,11 +119,11 @@ def exact_raster_poly_extract(
         for array in pixelvalues.iloc[i, :]:  # bands
             df_from_array = pd.DataFrame(array)
             bands_per_polygon = pd.concat([bands_per_polygon, df_from_array], axis=1)
-        # len(array) # number of pixels in the polygon
+
         bands_per_polygon.columns = bandnames
 
         # coverage fractions
-        polygon_factions = pd.DataFrame(factions.iloc[i])
+        polygon_fractions = pd.DataFrame(fractions.iloc[i]) # 1D array, one value per pixel
 
         specific_metadata = metadata.iloc[i, :]
         specific_metadata_rep = [specific_metadata] * len(array)
@@ -130,10 +136,16 @@ def exact_raster_poly_extract(
         # field_PxIDs = list(range(1, len(array) + 1))
         # bands_per_polygon.insert(0, "polyPxID", field_PxIDs)
 
-        for i, colname in enumerate(colnames):
-            bands_per_polygon.insert(i, colname, [specific_metadata[colname]] * len(array))
+        # previous implementationwhich was unsable
+        #for i, colname in enumerate(colnames):
+        #    bands_per_polygon.insert(i, colname, [specific_metadata[colname]] * len(array))
 
-        bands_per_polygon.insert(meta_count, "cover_frac", polygon_factions)
+
+        for col_idx, colname in enumerate(colnames):
+            bands_per_polygon.insert(col_idx, colname, [specific_metadata[colname]] * len(bands_per_polygon))
+
+
+        bands_per_polygon.insert(meta_count, "cover_frac", polygon_fractions)
 
         final_result = pd.concat([final_result, bands_per_polygon], axis=0).reset_index(drop=True, inplace=False)
     print("Done")
