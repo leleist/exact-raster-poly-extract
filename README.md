@@ -33,6 +33,8 @@ include_columns = ['column1', 'column2'] # e.g. ['id', 'class']
 
 output = exact_raster_poly_extract(raster_path, polygon_path, include_columns,fillvalue=9999, progress=True)
 ```
+## Notes
+Please note that exact_raster_poly_extract only works if all bands/layers of the raster have identical nodata patterns.
 
 ## Contributions
 The package will continue to be developed as needed.
@@ -40,13 +42,13 @@ The package will continue to be developed as needed.
 Any contributions are welcome.
 
 Current ToDos:  
-- add polygon pixel ID to output
-- find more efficient way to explode the initial PD df output.
+- implement dedicated polygon ID handover
+- solve varying nodata patterns in raster bands to enable extraction from composited stacks
 
 ## Acknowledgments
 
 This package is a wrapper for the `exact_extract` function. 
-The latter development was supported by NASA, U.S. Army Engineer Research and Development Center (ERDC) and ISciences, LLC and is used under the Apache License 2.0.
+The development of [exact_extract](https://isciences.github.io/exactextract/) was supported by NASA, U.S. Army Engineer Research and Development Center (ERDC) and ISciences, LLC and is used under the Apache License 2.0.
 
 If you use this package, please cite: 
   - the **original authors**
