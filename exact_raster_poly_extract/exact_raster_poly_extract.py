@@ -62,11 +62,11 @@ def exact_raster_poly_extract(
     with rasterio.open(raster_path) as src: # raster itself never loaded into memory
         num_bands = src.count
         bounds = src.bounds
-
-    # Create a list of the band names starting from 1
+        raster_crs = src.crs
+        # Create a list of the band names starting from 1
     bandnames = [f"B_{i}" for i in range(1, num_bands + 1)]
 
-    if src.crs != polygons.crs:
+    if raster_crs != polygons.crs:
         polygons = polygons.to_crs(src.crs)
         print("Crs did not match. .shp crs has been reprojected.")
 
