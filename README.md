@@ -34,7 +34,7 @@ include_columns = ['column1', 'column2'] # e.g. ['id', 'class']
 output = exact_raster_poly_extract(raster_path, polygon_path, include_columns,fillvalue=9999, progress=True)
 ```
 ## Notes
-Please note that exact_raster_poly_extract only works if all bands/layers of the raster have identical nodata patterns.
+Please note that `exact_raster_poly_extract` only works if all bands/layers of the raster have identical nodata patterns.
 
 ## Contributions
 The package will continue to be developed as needed.
