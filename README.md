@@ -42,8 +42,8 @@ The package will continue to be developed as needed.
 Any contributions are welcome.
 
 Current ToDos:  
-- implement dedicated polygon ID handover
-- solve varying nodata patterns in raster bands to enable extraction from composited stacks
+- implement dedicated polygon ID handover.
+- solve varying nodata patterns in raster bands to enable extraction from composited stacks.
 
 ## Acknowledgments
 
