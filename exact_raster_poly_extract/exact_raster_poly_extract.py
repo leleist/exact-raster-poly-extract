@@ -59,11 +59,10 @@ def exact_raster_poly_extract(
             print(f"Column '{col}' contained missing values; filling with {fillvalue}.")
             polygons[col] = polygons[col].fillna(fillvalue)
 
-    with rasterio.open(raster_path) as src:
-        raster = src.read()
+    with rasterio.open(raster_path) as src: # raster itself never loaded into memory
+        num_bands = src.count
         bounds = src.bounds
 
-    num_bands = raster.shape[0]  # - 1
     # Create a list of the band names starting from 1
     bandnames = [f"B_{i}" for i in range(1, num_bands + 1)]
 
